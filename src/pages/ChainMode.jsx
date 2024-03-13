@@ -3,6 +3,8 @@ import { toast } from "react-hot-toast";
 import image from "../assets/image.png";
 import image2 from "../assets/image2.png";
 import image3 from "../assets/image3.png";
+import { GrPowerReset } from "react-icons/gr";
+import bg from "../assets/bg.mp4";
 
 const images = [image, image2, image3];
 
@@ -49,19 +51,43 @@ export default function ChainMode() {
 
   const isMatch = (arr) => arr.every((val, i, arr) => val === arr[0]);
 
+  const resetGame = () => {
+    setGrid(initializeGrid());
+    setTickets(10);
+    setSelected([]);
+  };
+
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-slate-500 to-slate-800">
+    <div className="relative flex flex-col items-center justify-center min-h-screen">
+      <img
+        src={image2}
+        className="blur-md scale-125 absolute top-0 left-0 min-w-full min-h-full object-cover z-[-2]"
+        alt=""
+      />
+      <video
+        className=" absolute top-0 left-0 min-w-full min-h-full object-cover z-[-1]"
+        muted
+        loop
+        autoPlay
+        src={bg}
+      ></video>
       <div className="text-white  text-xl text-center p-1 mb-4">
         Tickets: {tickets}
       </div>
+      <button
+        onClick={resetGame}
+        className="mb-4 flex justify-center items-center gap-1 red-gradient-btn"
+      >
+        <GrPowerReset /> Reset
+      </button>
       <div className=" grid grid-cols-6 gap-4 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
         {grid.map((row, i) =>
           row.map((cell, j) => (
             <div
               key={`${i}-${j}`}
-              className={`w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 ${
+              className={`w-16 h-16 sm:w-12 sm:h-12 lg:w-16 lg:h-16 ${
                 cell.revealed
-                  ? "bg-green-500 rounded-md transition duration-500"
+                  ? "bg-black rounded-md transition duration-500"
                   : "bg-gradient-to-r from-slate-300 to-slate-500 rounded-md transition duration-500"
               }`}
               onClick={() => handleClick(i, j)}
@@ -70,7 +96,7 @@ export default function ChainMode() {
                 <img
                   src={cell.image}
                   alt="fruit"
-                  className="w-full h-full object-cover"
+                  className="rounded-md w-full h-full object-cover"
                 />
               )}
             </div>
