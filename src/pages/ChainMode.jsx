@@ -50,34 +50,32 @@ export default function ChainMode() {
   const isMatch = (arr) => arr.every((val, i, arr) => val === arr[0]);
 
   return (
-    <div className="">
-      <div className="text-white bg-gray-950 text-xl text-center p-1">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-slate-500 to-slate-800">
+      <div className="text-white  text-xl text-center p-1 mb-4">
         Tickets: {tickets}
       </div>
-      <div className="bg-gray-800 h-screen flex items-center justify-center">
-        <div className="grid grid-cols-6 gap-4">
-          {grid.map((row, i) =>
-            row.map((cell, j) => (
-              <div
-                key={`${i}-${j}`}
-                className={`w-16 h-16 ${
-                  cell.revealed
-                    ? "bg-green-500 rounded-md"
-                    : " bg-gradient-to-r from-slate-300 to-slate-500 rounded-md"
-                }`}
-                onClick={() => handleClick(i, j)}
-              >
-                {cell.revealed && (
-                  <img
-                    src={cell.image}
-                    alt="fruit"
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-            ))
-          )}
-        </div>
+      <div className=" grid grid-cols-6 gap-4 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-6">
+        {grid.map((row, i) =>
+          row.map((cell, j) => (
+            <div
+              key={`${i}-${j}`}
+              className={`w-16 h-16 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 ${
+                cell.revealed
+                  ? "bg-green-500 rounded-md transition duration-500"
+                  : "bg-gradient-to-r from-slate-300 to-slate-500 rounded-md transition duration-500"
+              }`}
+              onClick={() => handleClick(i, j)}
+            >
+              {cell.revealed && (
+                <img
+                  src={cell.image}
+                  alt="fruit"
+                  className="w-full h-full object-cover"
+                />
+              )}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );
