@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "../../../server/config/axios";
+import axios from "../config/axios";
 // import Logo from "../assets/Anywhere-Transparent.png";
 import { Link, useNavigate } from "react-router-dom";
 import vid from "../assets/bg.mp4";
