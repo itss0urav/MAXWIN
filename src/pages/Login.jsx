@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import vid from "../assets/bg.mp4";
-import axios from "../config/axios";
+import axios from "../../../server/config/axios";
 import { toast } from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 // import Logo from "../assets/Anywhere-Transparent.png";
