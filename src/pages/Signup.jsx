@@ -36,7 +36,7 @@ const SignUp = () => {
       });
     } else if (password === confirmPassword) {
       try {
-        const response = await axios.post("/users/signup", user);
+        const response = await axios.post("/user/createusers", user);
 
         setAlertMessage(response.data.message);
         nav("/login");

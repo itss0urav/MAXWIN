@@ -24,7 +24,7 @@ const Login = () => {
     };
 
     try {
-      const req = await axios.post("/users/login", userCredentials);
+      const req = await axios.post("/user/loginusers", userCredentials);
       console.log("from login", req.data.token);
 
       setUser(req.data.user);
